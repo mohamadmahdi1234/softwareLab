@@ -1,0 +1,7 @@
+fullnameOverride: mysql
+mysqlNamespace: mysql-namespace
+
+secrets:
+  MYSQL_PASSWORD: ""
+  MYSQL_USER: ""
+  MYSQL_ROOT_PASSWORD: ""

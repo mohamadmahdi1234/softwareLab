@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+  namespace: {{.Values.simpleApiNamespace}}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+        - name: myapp
+          image: testsimple:1.0.40
+          envFrom:
+            - configMapRef:
+                name: {{ include "deployment.fullname" . }}-config
+            - secretRef:
+                name: {{ include "deployment.fullname" . }}-secret
+          ports:
+            - name: http
+              containerPort: 3000

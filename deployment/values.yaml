@@ -1,0 +1,10 @@
+simpleApiNamespace: simple-api-namespace
+fullnameOverride: go-api
+
+envs:
+  DB_HOST: "mysql.mysql-namespace.svc.cluster.local"
+
+
+secrets:
+  DB_PASSWORD: ""
+  DB_USERNAME: ""

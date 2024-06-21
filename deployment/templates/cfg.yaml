@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "deployment.fullname" . }}-config
+  namespace: {{ .Values.simpleApiNamespace }}
+data:
+  {{- range $k, $v := .Values.envs }}
+  {{- if $v }}
+  {{ $.Values.prefix }}{{ $k | replace "-" "_"  | upper }}: {{ $v | quote }}
+  {{- end }}
+  {{- end }}
